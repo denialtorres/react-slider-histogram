@@ -8,7 +8,7 @@ var Histogram = React.createClass({
         return {
             width: 370,
             height: 110,
-            margin: {top: 10, right: 30, bottom: 30, left: 30},
+            margin: {top: 10, right: 30, bottom: 0, left: 3},
             buckets: 10
         };
     },
@@ -44,7 +44,6 @@ var Histogram = React.createClass({
 
         this.xAxis = d3.svg.axis()
             .scale(this.x)
-            .ticks(this.props.buckets)
             .orient("bottom");
 
         var svg = d3.select(this.refs.svg)
@@ -54,10 +53,10 @@ var Histogram = React.createClass({
             .append("g")
             .attr("transform", "translate(" + m.left + "," + m.top + ")");
 
-        svg.append("g")
-            .attr("class", "x axis")
-            .attr("transform", "translate(0," + this.chart_height + ")")
-            .call(this.xAxis);
+        // svg.append("g")
+        //     .attr("class", "x axis")
+        //     .attr("transform", "translate(0," + this.chart_height + ")")
+        //     .call(this.xAxis);
 
         var self = this;
 
